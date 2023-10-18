@@ -1,0 +1,56 @@
+{
+  "publisher": "mofosyne",
+  "name": "quickcalc",
+  "icon": "logo.png",
+  "displayName": "quickcalc",
+  "description": "An intuitive plaintext calculator using math.js. Features inline results and supports free-form calculations.",
+  "repository": "https://github.com/mofosyne/vscode-quickcalc",
+  "keywords": ["calculator", "math", "quickmathjs", "mathjs", "plaintext"],
+  "version": "1.0.0",
+  "engines": {
+    "vscode": "^1.83.0"
+  },
+  "categories": [
+    "Other"
+  ],
+  "main": "./dist/extension.js",
+  "contributes": {
+    "commands": [
+      {
+        "command": "quickcalc.quickcalc",
+        "title": "quickcalc"
+      }
+    ]
+  },
+  "scripts": {
+    "vscode:prepublish": "npm run package",
+    "compile": "webpack",
+    "watch": "webpack --watch",
+    "package": "webpack --mode production --devtool hidden-source-map",
+    "compile-tests": "tsc -p . --outDir out",
+    "watch-tests": "tsc -p . -w --outDir out",
+    "pretest": "npm run compile-tests && npm run compile && npm run lint",
+    "lint": "eslint src --ext ts",
+    "test": "node ./out/test/runTest.js"
+  },
+  "devDependencies": {
+    "@types/mocha": "^10.0.2",
+    "@types/node": "18.x",
+    "@types/vscode": "^1.83.0",
+    "@typescript-eslint/eslint-plugin": "^6.7.3",
+    "@typescript-eslint/parser": "^6.7.3",
+    "@vscode/test-electron": "^2.3.4",
+    "eslint": "^8.50.0",
+    "glob": "^10.3.3",
+    "mocha": "^10.2.0",
+    "ts-loader": "^9.4.4",
+    "typescript": "^5.2.2",
+    "webpack": "^5.88.2",
+    "webpack-cli": "^5.1.4"
+  },
+  "dependencies": {
+    "mathjs": "^11.11.2",
+    "quickmathjs": "^2.1.6"
+  },
+  "license":"GNU GPL v3.0"
+}
