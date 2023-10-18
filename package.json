@@ -9,7 +9,7 @@
     "url": "https://github.com/mofosyne/vscode-quickcalc.git"
   },
   "keywords": ["calc", "calculator", "math", "quickmathjs", "mathjs", "plaintext"],
-  "version": "1.0.1",
+  "version": "1.0.2",
   "engines": {
     "vscode": "^1.83.0"
   },
@@ -18,7 +18,9 @@
   ],
   "main": "./dist/extension.js",
   "activationEvents": [
-    "onCommand:quickcalc.quickcalc"
+    "onCommand:quickcalc.quickcalc",
+    "onLanguage:markdown",
+    "onLanguage:plaintext"
   ],
   "contributes": {
     "commands": [

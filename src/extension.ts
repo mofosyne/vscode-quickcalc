@@ -16,7 +16,10 @@ export function activate(context: vscode.ExtensionContext) {
     // Note: Must only trigger if the document has explicit math block delimiter to minimise unexpected behaviour
     vscode.workspace.onDidSaveTextDocument(async (document: vscode.TextDocument) => {
         const autoEvaluate = vscode.workspace.getConfiguration('quickcalc').get('autoEvaluateOnSave');
-        if (autoEvaluate && document.languageId === 'markdown' && /```math/.test(document.getText())) {
+        const isPlaintext = document.languageId === 'plaintext';
+        const isMarkdown = document.languageId === 'markdown';
+        if (autoEvaluate && (isPlaintext || isMarkdown) && /```math/.test(document.getText())) {
+            // Feature is enabled and allowed for this document and Math Block Detected
             await evaluateDocument();
         }
     });
@@ -31,13 +34,14 @@ async function evaluateDocument() {
     }
 
     const text = activeEditor.document.getText();
-    const isMarkdown = activeEditor.document.languageId === 'markdown';
     const isPlaintext = activeEditor.document.languageId === 'plaintext';
+    const isMarkdown = activeEditor.document.languageId === 'markdown';
 
     if (isPlaintext || isMarkdown) {
         try {
             let result: string | null = null;
             if (/```math/.test(text)) {
+                // Math Block Detected
                 result = await calculator.calculateWithMathSections(text);
             } else {
                 result = await calculator.calculate(text);
