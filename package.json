@@ -17,6 +17,9 @@
     "Other"
   ],
   "main": "./dist/extension.js",
+  "activationEvents": [
+    "onCommand:quickcalc.quickcalc"
+  ],
   "contributes": {
     "commands": [
       {
