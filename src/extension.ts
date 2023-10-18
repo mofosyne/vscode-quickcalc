@@ -33,28 +33,29 @@ async function evaluateDocument() {
         return;
     }
 
-    const text = activeEditor.document.getText();
+    const originalText = activeEditor.document.getText();
     const isPlaintext = activeEditor.document.languageId === 'plaintext';
     const isMarkdown = activeEditor.document.languageId === 'markdown';
 
     if (isPlaintext || isMarkdown) {
         try {
             let result: string | null = null;
-            if (/```math/.test(text)) {
+            if (/```math/.test(originalText)) {
                 // Math Block Detected
-                result = await calculator.calculateWithMathSections(text);
+                result = await calculator.calculateWithMathSections(originalText);
             } else {
-                result = await calculator.calculate(text);
+                result = await calculator.calculate(originalText);
             }
-            if (result !== null) {
+            
+            if (result && result !== originalText) {
                 activeEditor.edit(editBuilder => {
                     const entireRange = new vscode.Range(
                         activeEditor.document.positionAt(0),
-                        activeEditor.document.positionAt(text.length)
+                        activeEditor.document.positionAt(originalText.length)
                     );
                     editBuilder.replace(entireRange, result as string);
                 });
-            } else {
+            } else if (!result) {
                 throw new Error("QuickCalc encountered an issue evaluating the content. Ensure the math expressions are correctly formatted.");
             }
         } catch (error) {
