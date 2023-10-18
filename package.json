@@ -1,7 +1,7 @@
 {
   "publisher": "mofosyne",
   "name": "quickcalc",
-  "icon": "logo.png",
+  "icon": "images/logo.png",
   "displayName": "quickcalc",
   "description": "An intuitive plaintext calculator using math.js. Features inline results and supports free-form calculations.",
   "repository": {
