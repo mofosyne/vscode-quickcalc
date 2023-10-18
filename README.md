@@ -1,5 +1,7 @@
 # QuickCalc for VS Code
 
+![Extension Logo](images/logo.png)
+
 A seamless integration of the [QuickMathJS - NPM](https://www.npmjs.com/package/quickmathjs?activeTab=readme) calculator into VS Code, allowing you to perform mathematical calculations directly within your editor. Perfect for those working with markdown or plaintext files and want real-time calculations without leaving the VS Code environment. The syntax of this calculator is intended to emulate the style of plaintext maths sent over email (much like how markdown/commonmark is intended to match the natural email writing style of people)
 
 ## Features
@@ -60,7 +62,9 @@ https://github.com/mofosyne/QuickMathJS
 
 ## Extension Settings
 
-Currently, QuickCalc is optimized for seamless use without requiring additional settings. Future versions might introduce customization options based on user feedback.
+QuickCalc is designed for seamless use. However, there are a few settings for customization:
+
+- `quickcalc.autoEvaluateOnSave`: Automatically evaluate math expressions in Markdown files on save when wrapped in \`\`\`math blocks. Defaults to `true`.
 
 ## Known Issues
 
@@ -77,6 +81,10 @@ Currently, QuickCalc is optimized for seamless use without requiring additional 
 ## Contribute
 
 Got suggestions or found a bug? [Open an issue](https://github.com/mofosyne/vscode-quickcalc/issues) on our GitHub repository. Contributions via pull requests are very welcome!
+
+## Acknowledgements
+
+- Math.js: For the core mathematical functions.
 
 ## License
 

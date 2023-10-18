@@ -4,7 +4,10 @@
   "icon": "logo.png",
   "displayName": "quickcalc",
   "description": "An intuitive plaintext calculator using math.js. Features inline results and supports free-form calculations.",
-  "repository": "https://github.com/mofosyne/vscode-quickcalc",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/mofosyne/vscode-quickcalc.git"
+  },
   "keywords": ["calculator", "math", "quickmathjs", "mathjs", "plaintext"],
   "version": "1.0.0",
   "engines": {
@@ -20,7 +23,18 @@
         "command": "quickcalc.quickcalc",
         "title": "quickcalc"
       }
-    ]
+    ],
+    "configuration": {
+      "type": "object",
+      "title": "QuickCalc settings",
+      "properties": {
+        "quickcalc.autoEvaluateOnSave": {
+          "type": "boolean",
+          "default": true,
+          "description": "Automatically evaluate math expressions in Markdown files on save. (Only if delimited by math blocks)"
+        }
+      }
+    }
   },
   "scripts": {
     "vscode:prepublish": "npm run package",
@@ -52,5 +66,5 @@
     "mathjs": "^11.11.2",
     "quickmathjs": "^2.1.6"
   },
-  "license":"GNU GPL v3.0"
+  "license": "GNU GPL v3.0"
 }
