@@ -6,6 +6,13 @@ A seamless integration of the [QuickMathJS - NPM](https://www.npmjs.com/package/
 
 ![Preview Animation](images/preview.gif)
 
+## Avalibility
+
+This extention is avaliable on both VSCode at the Visual Studio Marketplace and Codium on Open-VSX as shown below:
+
+* Visual Studio Marketplace: <https://marketplace.visualstudio.com/items?itemName=mofosyne.quickcalc>
+* Open-VSX: <https://open-vsx.org/extension/mofosyne/quickcalc>
+
 ## Features
 
 - **Inline Calculations**: Perform calculations directly within your files.
