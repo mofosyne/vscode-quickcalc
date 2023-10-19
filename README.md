@@ -4,6 +4,8 @@
 
 A seamless integration of the [QuickMathJS - NPM](https://www.npmjs.com/package/quickmathjs?activeTab=readme) calculator into VS Code, allowing you to perform mathematical calculations directly within your editor. Perfect for those working with markdown or plaintext files and want real-time calculations without leaving the VS Code environment. The syntax of this calculator is intended to emulate the style of plaintext maths sent over email (much like how markdown/commonmark is intended to match the natural email writing style of people)
 
+![Preview Animation](images/preview.gif)
+
 ## Features
 
 - **Inline Calculations**: Perform calculations directly within your files.
