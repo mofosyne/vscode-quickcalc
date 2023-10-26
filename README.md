@@ -17,13 +17,13 @@ This extention is avaliable on both VSCode at the Visual Studio Marketplace and 
 
 - **Inline Calculations**: Perform calculations directly within your files.
 - **Markdown & Plaintext Support**: Specifically tailored for markdown and plaintext files.
-- **Intuitive Syntax**: Use the ```math delimiter in markdown files to define sections for calculations.
+- **Intuitive Syntax**: Use the ```calc delimiter in markdown files to define sections for calculations.
 - **Real-time Results**: Instantly see the result of your calculations.
 
 ## How to Use
 
 1. Open a markdown or plaintext file in VS Code.
-2. Type out your calculations. For markdown files, wrap your calculations with the ```math delimiter.
+2. Type out your calculations. For markdown files, wrap your calculations with the ```calc delimiter.
     - If missing, then the entire document is assumed to be a calculation sheet. This is okay in a pitch, but may cause some issues if '=' or ':' is misrecognised.
 3. Execute the `QuickCalc` command (default shortcut: `Ctrl+Shift+Q`).
 4. See the results inline within your file!
@@ -33,16 +33,20 @@ This extention is avaliable on both VSCode at the Visual Studio Marketplace and 
     # Markdown Document
     example content
 
-    ```math
-    a = 5
-    b = 7
-    c = a + b = ?
-    = ?
-    1 + 1
-        = ?
-        c = ?
-    total = a + b + c
-    total:
+    ```calc
+    # Basic Expressions with Direct Calculation
+    1 + 1 = ?
+          = ?
+
+    # Variable Assignment with Explicit Value Retrieval
+    a = 3
+    a: ?
+
+    # Simultaneous Assignment And Results
+    c = a + 3 = ?
+
+    # 2> spaces as alt method for Explicit Value Retrieval
+      c = ?
     ```
 
 After running the command, this becomes:
@@ -50,16 +54,20 @@ After running the command, this becomes:
     # Markdown Document
     example content
 
-    ```math
-    a = 5
-    b = 7
-    c = a + b = 12
-    = 12
-    1 + 1
-        = 2
-        c = 12
-    total = a + b + c
-    total: 24
+    ```calc
+    # Basic Expressions with Direct Calculation
+    1 + 1 = 2
+          = 2
+
+    # Variable Assignment with Explicit Value Retrieval
+    a = 3
+    a: 3
+
+    # Simultaneous Assignment And Results
+    c = a + 3 = 6
+
+    # 2> spaces as alt method for Explicit Value Retrieval
+      c = 6
     ```
 
 https://github.com/mofosyne/QuickMathJS
@@ -73,12 +81,12 @@ https://github.com/mofosyne/QuickMathJS
 
 QuickCalc is designed for seamless use. However, there are a few settings for customization:
 
-- `quickcalc.autoEvaluateOnSave`: Automatically evaluate math expressions in Markdown files on save when wrapped in \`\`\`math blocks. Defaults to `true`.
+- `quickcalc.autoEvaluateOnSave`: Automatically evaluate math expressions in Markdown files on save when wrapped in \`\`\`calc blocks. Defaults to `true`.
 
 ## Known Issues
 
 - Only supports markdown and plaintext files for now. We're looking to expand to other formats soon.
-- Complex calculations might require wrapping in the ```math delimiter even in plaintext files for accurate results.
+- Complex calculations might require wrapping in the ```calc delimiter even in plaintext files for accurate results.
 
 ## Release Notes
 

@@ -18,7 +18,7 @@ export function activate(context: vscode.ExtensionContext) {
         const autoEvaluate = vscode.workspace.getConfiguration('quickcalc').get('autoEvaluateOnSave');
         const isPlaintext = document.languageId === 'plaintext';
         const isMarkdown = document.languageId === 'markdown';
-        if (autoEvaluate && (isPlaintext || isMarkdown) && /```math/.test(document.getText())) {
+        if (autoEvaluate && (isPlaintext || isMarkdown) && /```calc/.test(document.getText())) {
             // Feature is enabled and allowed for this document and Math Block Detected
             await evaluateDocument();
         }
@@ -34,38 +34,31 @@ async function evaluateDocument() {
     }
 
     const originalText = activeEditor.document.getText();
-    const isPlaintext = activeEditor.document.languageId === 'plaintext';
-    const isMarkdown = activeEditor.document.languageId === 'markdown';
-
-    if (isPlaintext || isMarkdown) {
-        try {
-            let result: string | null = null;
-            if (/```math/.test(originalText)) {
-                // Math Block Detected
-                result = await calculator.calculateWithMathSections(originalText);
-            } else {
-                result = await calculator.calculate(originalText);
-            }
-            
-            if (result && result !== originalText) {
-                activeEditor.edit(editBuilder => {
-                    const entireRange = new vscode.Range(
-                        activeEditor.document.positionAt(0),
-                        activeEditor.document.positionAt(originalText.length)
-                    );
-                    editBuilder.replace(entireRange, result as string);
-                });
-            } else if (!result) {
-                throw new Error("QuickCalc encountered an issue evaluating the content. Ensure the math expressions are correctly formatted.");
-            }
-        } catch (error) {
-            if (error instanceof Error) {
-                vscode.window.showErrorMessage(`QuickCalc Error: ${error.message}`);
-            } else {
-                vscode.window.showErrorMessage(`QuickCalc encountered an unknown error.`);
-            }
+    try {
+        let result: string | null = null;
+        if (/```calc/.test(originalText)) {
+            // Math Block Detected
+            result = await calculator.calculateWithMathSections(originalText);
+        } else {
+            result = await calculator.calculate(originalText);
         }
-    } else {
-        vscode.window.showInformationMessage('QuickCalc: Only markdown and plaintext files are supported at this stage. Contributions are welcome!');
+        
+        if (result && result !== originalText) {
+            activeEditor.edit(editBuilder => {
+                const entireRange = new vscode.Range(
+                    activeEditor.document.positionAt(0),
+                    activeEditor.document.positionAt(originalText.length)
+                );
+                editBuilder.replace(entireRange, result as string);
+            });
+        } else if (!result) {
+            throw new Error("QuickCalc encountered an issue evaluating the content. Ensure the math expressions are correctly formatted.");
+        }
+    } catch (error) {
+        if (error instanceof Error) {
+            vscode.window.showErrorMessage(`QuickCalc Error: ${error.message}`);
+        } else {
+            vscode.window.showErrorMessage(`QuickCalc encountered an unknown error.`);
+        }
     }
 }
