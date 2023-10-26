@@ -8,8 +8,15 @@
     "type": "git",
     "url": "https://github.com/mofosyne/vscode-quickcalc.git"
   },
-  "keywords": ["calc", "calculator", "math", "quickmathjs", "mathjs", "plaintext"],
-  "version": "1.1.1",
+  "keywords": [
+    "calc",
+    "calculator",
+    "math",
+    "quickmathjs",
+    "mathjs",
+    "plaintext"
+  ],
+  "version": "1.1.2",
   "engines": {
     "vscode": "^1.83.0"
   },
@@ -69,7 +76,7 @@
   },
   "dependencies": {
     "mathjs": "^11.11.2",
-    "quickmathjs": "^2.1.6"
+    "quickmathjs": "^2.1.18"
   },
   "license": "GNU GPL v3.0"
 }
