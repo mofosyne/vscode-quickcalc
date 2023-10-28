@@ -16,7 +16,7 @@
     "mathjs",
     "plaintext"
   ],
-  "version": "1.1.3",
+  "version": "1.1.4",
   "engines": {
     "vscode": "^1.83.0"
   },
@@ -76,7 +76,7 @@
   },
   "dependencies": {
     "mathjs": "^11.11.2",
-    "quickmathjs": "^2.1.18"
+    "quickmathjs": "^2.1.20"
   },
   "license": "GNU GPL v3.0"
 }
