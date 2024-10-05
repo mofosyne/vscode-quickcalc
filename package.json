@@ -16,7 +16,7 @@
     "mathjs",
     "plaintext"
   ],
-  "version": "1.2.0",
+  "version": "1.2.1",
   "engines": {
     "vscode": "^1.83.0"
   },
@@ -75,8 +75,8 @@
     "webpack-cli": "^5.1.4"
   },
   "dependencies": {
-    "mathjs": "^12.1.0",
-    "quickmathjs": "^2.2.0"
+    "mathjs": "^13.2.0",
+    "quickmathjs": "^2.2.2"
   },
   "license": "GNU GPL v3.0"
 }

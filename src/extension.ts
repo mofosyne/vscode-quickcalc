@@ -33,21 +33,26 @@ async function evaluateDocument() {
         return;
     }
 
-    const originalText = activeEditor.document.getText();
+    const document = activeEditor.document;
+    const originalText = document.getText();
+
+    // Get the line ending type (LF or CRLF)
+    const eol = document.eol === vscode.EndOfLine.CRLF ? '\r\n' : '\n';
+
     try {
         let result: string | null = null;
         if (/```calc/.test(originalText)) {
             // Math Block Detected
-            result = await calculator.calculateWithMathSections(originalText);
+            result = await calculator.calculateWithMathSections(originalText, eol);
         } else {
-            result = await calculator.calculate(originalText);
+            result = await calculator.calculate(originalText, eol);
         }
         
         if (result && result !== originalText) {
             activeEditor.edit(editBuilder => {
                 const entireRange = new vscode.Range(
-                    activeEditor.document.positionAt(0),
-                    activeEditor.document.positionAt(originalText.length)
+                    document.positionAt(0),
+                    document.positionAt(originalText.length)
                 );
                 editBuilder.replace(entireRange, result as string);
             });
